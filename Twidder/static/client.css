@@ -1,0 +1,205 @@
+body {
+  background-color: lightblue;
+}
+
+label {
+  display: inline-block;
+  width: 35%;
+  font-size: 13px;
+  margin-left: 2px;
+}
+
+li {
+  margin-top: 10px;
+}
+
+/* Should these be combined into one selector class for centering text? */
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+.leftText {
+  text-align: left;
+  padding-left: 40px;
+}
+
+.inputField {
+  width: 45%;
+  height: 12px;
+  margin-left: 25px;
+  font-size: 13px;
+}
+
+.submitButton {
+  height: 25px;
+  font-size: 12px;
+  margin-right: 2px;
+  float: right;
+}
+
+.tabButtons {
+  background-color: #424242;
+  color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 20px;
+  border: 1px solid lightgrey;
+  float: left;
+}
+
+.tabButtons:hover {
+  background-color: #292929;
+}
+
+.tabButtons.buttonPressed {
+  background-color: #171717;
+}
+
+.badInputWarning {
+  color: red;
+  font-size: 11px;
+  float: left;
+  margin-top: 6px;
+  margin-left: 2px;
+}
+
+.center {
+  text-align: center;
+}
+
+.centerMargin {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.noListMarkings {
+  list-style-type: none;
+}
+
+.messageWall {
+  text-align: center;
+  margin-top: 50px;
+  float: left;
+  width: 50%;
+}
+
+.positionAbsolute {
+  position: absolute;
+}
+
+.postedMessagesWall {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 75%;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.greyBorderBox {
+  background-color: lightgrey;
+  border: 1px solid black;
+}
+
+.whiteBorderBox {
+  background-color: white;
+  border: 3px solid black;
+}
+
+.profileInfoList {
+  font-size: 20px;
+  margin-top: 10px;
+  list-style-type: none;
+
+}
+
+.noPaddingLeft {
+  padding-left: 0px;
+}
+
+/* -----v ID's v-----------^ Classes ^-------  */
+
+#changePasswordButton {
+  float:right;
+  margin-right: 22px
+}
+
+#signOutButton {
+  display: block;
+  clear: both;
+  width: 90px;
+  height: 45px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+
+#userSearchbar {
+  margin-top: 50px;
+  text-align: center;
+}
+
+#displayBrowseProfile {
+  display: none;
+}
+
+#searchErrorMessage {
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  display: none;
+}
+
+#account {
+  width: 350px;
+}
+
+#sloganDiv {
+  width: 334px;
+  height: 394px;
+  float: left;
+  margin: 0px 5px 0px 0px;
+  border-style: solid;
+  border-width: 3px;
+}
+
+#personalInfo {
+  margin-top: 100px;
+  float: left;
+  clear: left;
+  width: 25%;
+  background-color: white;
+  border: 3px solid black;
+}
+
+#loginDiv {
+  width: 244px;
+  height: 94px;
+  float: right;
+  margin: 0px 0px 5px 5px;
+}
+
+#startScreenDiv {
+  width: 600px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px
+}
+
+#signUpDiv {
+  width: 244px;
+  height: 284px;
+  float: right;
+  margin: 5px 0px 0px 5px;
+
+}
+
+#image {
+  width: inherit;
+  height: inherit;
+}

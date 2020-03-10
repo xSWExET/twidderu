@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="client.css" type="text/css" rel="stylesheet">
+    <script src="client.js" type="text/javascript"> </script>
+    <script src="sha256.js" type="text/javascript"> </script>
+  </head>
+  <!-- The code that will be displayed for the Welcome View/Login View -->
+  <script id="welcomeView" type="text/view">
+    <div id="startScreenDiv">
+      <div id="sloganDiv">
+        <img id="image" src="wimage.png" >
+      </div>
+      <div class="whiteBorderBox" id="loginDiv">
+        <form onsubmit="validateLogin(this); return false">
+          <br>
+          <label for="email">Email</label>
+          <input class="inputField" type="email" id="email" name="email" required>
+          <br>
+          <label for="password">Password</label>
+          <input class="inputField" type="password" id="password" name="password" required>
+          <br>
+          <div class="badInputWarning" id="badLogin"></div>
+          <input class="submitButton" type="submit" value="Login">
+        </form>
+      </div>
+      <div class="whiteBorderBox" id="signUpDiv" >
+        <h3>Sign up here</h3>
+        <form onsubmit="validateSignup(this); return false">
+          <label for="firstName">First name</label>
+          <input class="inputField" type="text" id="firstName" name="firstName" required>
+          <br>
+          <label for="familyName">Family name</label>
+          <input class="inputField" type="text" id="familyName" name="familyName" required>
+          <br>
+          <label for="gender">Gender</label>
+          <select class="inputField" name="gender" id="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          <br>
+          <label for="city">City</label>
+          <input class="inputField" type="text" id="city" name="city" required>
+          <br>
+          <label for="country">Country</label>
+          <input class="inputField" type="text" id="country" name="country" required>
+          <br>
+          <label for="email">Email</label>
+          <input class="inputField" type="email" id="email" name="email" required>
+          <br>
+          <label for="password">Password</label>
+          <input class="inputField" type="password" id="password" name="password" required>
+          <br>
+          <label for="repeatpsw">Repeat PSW</label>
+          <input class="inputField" type="password" id="repeatpsw" name="repeatpsw" required>
+          <br>
+          <div class="badInputWarning" id="badSignup"></div>
+          <input class="submitButton" type="submit" id="signup" name="signup" value="Sign Up">
+        </form>
+      </div>
+    </div>
+  </script>
+
+  <!-- The code that will be viewed for the Profile View -->
+  <script id="profileView" type="text/view">
+    <div class="positionAbsolute">
+      <button id="homeTab" class="tabButtons" onclick="openTab(event, 'home')">Home</button>
+      <button class="tabButtons" onclick="openTab(event, 'browse')">Browse</button>
+      <button class="tabButtons" onclick="openTab(event, 'account')">Account</button>
+    </div>
+
+    <!-- // The home tab // -->
+    <div id="home" class="tab centerMargin">
+      <h2>Home</h2>
+
+      <div id="personalInfo" class="whiteBorderBox">
+        <h2 class="centerMargin">Profile</h2>
+          <div class="center">
+            <form action="/upload_file" method="POST" enctype=multipart/form-data>
+              <input type="file" name="file" oninput="saveCookie()">
+              <input type="submit" value="Upload">
+            </form>
+
+
+            <div id="profileImage">
+              <!--
+              -->
+            </div>
+
+          </div>
+        <ul class="profileInfoList" id="personalInfoList">
+        </ul>
+      </div>
+      <div class="messageWall">
+        <div>
+          <form onsubmit="postMessage(this, true); return false">
+            <input type="text" id="postText" name="postText" placeholder="Write what's on your mind" required>
+            <input type="submit" id="postButton" name="post" value="Post">
+          <br>
+          </form>
+        </div>
+        <div class="greyBorderBox postedMessagesWall">
+          <h3>Messages</h3>
+          <ul id="postedMessagesList" class="noPaddingLeft">
+          </ul>
+        </div>
+        <button onclick="updateWall(true)">Refresh</button>
+      </div>
+    </div>
+
+    <!-- // The browse tab // -->
+    <div id="browse" class="tab centerMargin">
+    <h2> Browse </h2>
+      <div id="userSearchbar">
+        <form onsubmit="searchProfile(this); return false">
+          <input type="email" id="searchText" name="searchText" placeholder="Email" required>
+          <input type="submit" id="searchButton" name="search" value="Search">
+        </form>
+      </div>
+      <div id="searchErrorMessage"></div>
+      <br>
+      <div id="displayBrowseProfile">
+        <div id="personalInfo" class="whiteBorderBox">
+          <h2 class="centerMargin">Profile</h2>
+          <div class="center">
+            <div id="visitedProfileImage">
+              <!--
+              -->
+            </div>
+          </div>
+          <ul class="profileInfoList" id="visitedPersonalInfoList">
+          </ul>
+        </div>
+        <div class="messageWall">
+          <div>
+            <form onsubmit="postMessage(this, false); return false">
+              <input type="text" id="postTextOthers" name="postTextOthers" placeholder="Write what's on his/her mind" required>
+              <input type="submit" id="postButton" name="post" value="Post">
+            <br>
+            </form>
+          </div>
+          <div class="greyBorderBox postedMessagesWall">
+            <h3>Messages</h3>
+            <ul id="visitedPostedMessagesList" class="noPaddingLeft">
+            </ul>
+          </div>
+          <button onclick="updateWall(false)">Refresh</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- // The account tab // -->
+    <div id="account" class="tab centerMargin">
+      <h2>Account</h2>
+      <div class="greyBorderBox">
+        <h3>Change password</h3>
+        <form onsubmit="changePassword(this); return false">
+          <label for="oldPassword">Old password</label>
+          <input class="inputField" type="password" id="oldPassword" name="oldPassword" required>
+          <br>
+          <label for="newPassword">New password</label>
+          <input class="inputField" type="password" id="newPassword" name="newPassword" required>
+          <br>
+          <label for="repeatPassword">Repeat password</label>
+          <input class="inputField" type="password" id="repeatPassword" name="repeatPassword" required>
+          <br>
+          <div class="badInputWarning" id="badChangePassword"></div>
+          <input id="changePasswordButton" type="submit" value="Change">
+          <br>
+          <br>
+        </form>
+      </div>
+      <div>
+        <button id="signOutButton" onclick="signOut()">Sign out</button>
+      </div>
+    </div>
+  </script>
+
+  <!-- The content in the contentDiv is what is actually showing on screen sloganDiv
+        and is changed when we call the DisplayView function from client.js file -->
+  <body>
+    <div id="contentDiv"></div>
+  </body>
+
+</html>
